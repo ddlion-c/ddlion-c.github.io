@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    <entry>
+      <title><![CDATA[Git Notes]]></title>
+      <url>/tutorial/2022/10/15/Git-Notes/</url>
+      <content type="text"><![CDATA[There are many useful commands besides commit/push/pull.  Set the user name and email:To set your global username/email configuration:Open the command line.Set your username:git config –global user.name “FIRST_NAME LAST_NAME”Set your email address:git config –global user.email “MY_NAME@example.com”To set repository-specific(if you want to update repo using different git accounts) username/email configuration:From the command line, change into the repository directory.Set your username:git config user.name “FIRST_NAME LAST_NAME”Set your email address:git config user.email “MY_NAME@example.com”Verify your configuration by displaying your configuration file:cat .git/config  Change commit names in the history:]]></content>
+      <categories>
+        
+          <category> Tutorial </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Start with a GitPage]]></title>
+      <url>/tutorial/2022/10/15/Get-start-from-git-page/</url>
+      <content type="text"><![CDATA[This tutorial is based on MacOS, while setup jekyll in Linux system should work in the similar way.GitPage probably is the best approach to create a FREE blog for recording daily learning activities.You only need two steps to setup a GitPage:https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-sitehttps://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-tokenYou can find many templates online, I will take an example of a jekyll theme that I like.git clone https://github.com/Simpleyyt/jekyll-theme-next.gitFor using jekyll, here is a user manual in Chinese.http://jekyllcn.com/docs/usage/English manual link:https://jekyllrb.com/docs/When install required packages for jekyll, the most challenging part is the version and dependencies. To avoid possible issues, I recommend using a ruby venv instead.Install Ruby venvTo install Ruby venv, excecute below commandlines in the terminal:  Install GnuPG    $ brew install gnupg        Install GPG keys (either way from below)    $ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB        or    gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB        Install RVM    $ \curl -sSL https://get.rvm.io | bash        As the successful installation message showed, close and restart the terminal. Run below command to install the new venv. Be aware that jekyll only works on the Ruby version 2.5.0 and above.    rvm install 3.1.2        Check your version list by:    rvm list        Create RVM Using Default Ruby Version:    rvm alias create default 3.1.2        Tips: Some users might encounter the error of “./project.h:119:10: fatal error: ‘openssl/ssl.h’ file not found”, to resolve this issue, run below command to install openssl:    brew link --force openssl      Start Ruby venv And Install Required Dependencies  After install the rvm, start the rvm by runing:    source /The/Path/To/Your/RVM        Install jekyll:    gem install jekyll        Install Bundler:    bundle install        Update Bundler:    bundle update        You can always check your token by:    echo $JEKYLL_GITHUB_TOKEN        If it is empty, setup git token in the path by replacing yourtoken in your git setup. Token can be found in Git-&gt;Settings-&gt;Developer Settings-&gt;Personal access tokens    export JEKYLL_GITHUB_TOKEN=yourtoken        I only setup it once, even if the next time I didn’t run the commandline above and the JEKYLL_GITHUB_TOKEN back to empty, the server can still be established.    If the rvm is using version 3.x.x, also run the commandline below:    bundle add webrick      Excecute The PreviewTo preview the changes on local, run the command:bundle exec jekyll serverThen the messages in terminal will show the url of local host preview.  Tips: Sometimes the local preview might not be established due to the port(the example below uses port 4000) is occupied, run the command line below to locate the pid:    lsof -wni tcp:4000        After validate the redundant process, kill the process by pid:    kill -9 &lt;pid&gt;      For more information, please refer to the official article below:https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyllPost Blog ArticlesTo post your article, simply commit and push the changes like using git daily.]]></content>
+      <categories>
+        
+          <category> Tutorial </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Deep Learning Hyperparameter Tuning Note (1)]]></title>
+      <url>/tutorial/deep%20learning/tensorflow/2022/05/27/Deep-Learning-Hyperparameter-Tuning-Note(1)/</url>
+      <content type="text"><![CDATA[Hyperparameter tuning is a mandatory procedure of implementing a deep learning model. A wrong set of parameter could lead to many problems, such as overfitting or under fitting.Grid search for hyperparameter tuning isn’t realistic, we need to find a proper start point for hyperparameters.After implemented the model, first thing is to make sure the data processed in each epoch is sufficient to cover the whole training dataset.The default batch size of fit() method in tensorflow is 32, if steps per epoch is 1000, then each epoch could process 32,000 samples.Learning rate is one of the most important parameters for training the model, it is a parameter to control how much the weights are updated according to the estimated error.]]></content>
+      <categories>
+        
+          <category> Tutorial </category>
+        
+          <category> Deep Learning </category>
+        
+          <category> Tensorflow </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+</search>

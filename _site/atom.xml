@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-16T23:22:25-04:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">NexT</title><subtitle>my gitpage</subtitle><author><name>John Doe</name></author><entry><title type="html">Start with a GitPage</title><link href="http://localhost:4000/tutorial/2022/10/15/Get-start-from-git-page/" rel="alternate" type="text/html" title="Start with a GitPage" /><published>2022-10-15T19:30:09-04:00</published><updated>2022-10-15T19:30:09-04:00</updated><id>http://localhost:4000/tutorial/2022/10/15/Get%20start%20from%20git%20page</id><content type="html" xml:base="http://localhost:4000/tutorial/2022/10/15/Get-start-from-git-page/">&lt;p&gt;This tutorial is based on MacOS, while setup jekyll in Linux system should work in the similar way.&lt;br /&gt;
+GitPage probably is the best approach to create a FREE blog for recording daily learning activities.&lt;br /&gt;
+You only need two steps to setup a GitPage:&lt;br /&gt;
+&lt;a href=&quot;https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site&quot;&gt;https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site&lt;/a&gt;
+&lt;a href=&quot;https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token&quot;&gt;https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can find many templates online, I will take an example of a jekyll theme that I like.&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/Simpleyyt/jekyll-theme-next.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For using jekyll, here is a user manual in Chinese.&lt;br /&gt;
+&lt;a href=&quot;http://jekyllcn.com/docs/usage/&quot;&gt;http://jekyllcn.com/docs/usage/&lt;/a&gt;
+English manual link:&lt;br /&gt;
+&lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--create a ruby venv for jekyll to prevent all the version and dependencies issues--&gt;
+&lt;p&gt;When install required packages for jekyll, the most challenging part is the version and dependencies. To avoid possible issues, I recommend using a ruby venv instead.&lt;/p&gt;
+&lt;h1 id=&quot;install-ruby-venv&quot;&gt;Install Ruby venv&lt;/h1&gt;
+&lt;p&gt;To install Ruby venv, excecute below commandlines in the terminal:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Install GnuPG
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gnupg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install GPG keys (either way from below)
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gpg &lt;span class=&quot;nt&quot;&gt;--keyserver&lt;/span&gt; hkp://pool.sks-keyservers.net &lt;span class=&quot;nt&quot;&gt;--recv-keys&lt;/span&gt; 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;strong&gt;or&lt;/strong&gt;&lt;/p&gt;
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--recv-keys&lt;/span&gt; 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install RVM
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;url &lt;span class=&quot;nt&quot;&gt;-sSL&lt;/span&gt; https://get.rvm.io | bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;As the successful installation message showed, close and restart the terminal. Run below command to install the new venv. Be aware that jekyll only works on the Ruby version &lt;strong&gt;2.5.0&lt;/strong&gt; and above.
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;3.1.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Check your version list by:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create RVM Using Default Ruby Version:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;create default 3.1.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tips: Some users might encounter the error of “./project.h:119:10: fatal error: ‘openssl/ssl.h’ file not found”, to resolve this issue, run below command to install openssl:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt; openssl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;start-ruby-venv-and-install-required-dependencies&quot;&gt;Start Ruby venv And Install Required Dependencies&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;After install the rvm, start the rvm by runing:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /The/Path/To/Your/RVM
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install jekyll:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install Bundler:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Update Bundler:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;You can always check your token by:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$JEKYLL_GITHUB_TOKEN&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;If it is empty, setup git token in the path by replacing &lt;em&gt;yourtoken&lt;/em&gt; in your git setup. Token can be found in Git-&amp;gt;Settings-&amp;gt;Developer Settings-&amp;gt;Personal access tokens&lt;/p&gt;
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;yourtoken
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;I only setup it once, even if the next time I didn’t run the commandline above and the JEKYLL_GITHUB_TOKEN back to empty, the server can still be established.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If the rvm is using version 3.x.x, also run the commandline below:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle add webrick
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;excecute-the-preview&quot;&gt;Excecute The Preview&lt;/h1&gt;
+&lt;p&gt;To preview the changes on local, run the command:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then the messages in terminal will show the url of local host preview.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tips: Sometimes the local preview might not be established due to the port(the example below uses port 4000) is occupied, run the command line below to locate the pid:
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lsof &lt;span class=&quot;nt&quot;&gt;-wni&lt;/span&gt; tcp:4000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;After validate the redundant process, kill the process by &lt;em&gt;pid&lt;/em&gt;:&lt;/p&gt;
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-9&lt;/span&gt; &amp;lt;pid&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please refer to the official article below:&lt;br /&gt;
+&lt;a href=&quot;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll&quot;&gt;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;post-blog-articles&quot;&gt;Post Blog Articles&lt;/h1&gt;
+&lt;p&gt;To post your article, simply commit and push the changes like using git daily.&lt;/p&gt;</content><author><name>John Doe</name></author><category term="Tutorial" /><summary type="html">This tutorial is based on MacOS, while setup jekyll in Linux system should work in the similar way. GitPage probably is the best approach to create a FREE blog for recording daily learning activities. You only need two steps to setup a GitPage: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token</summary></entry><entry><title type="html">Git Notes</title><link href="http://localhost:4000/tutorial/2022/10/15/Git-Notes/" rel="alternate" type="text/html" title="Git Notes" /><published>2022-10-15T19:30:09-04:00</published><updated>2022-10-15T19:30:09-04:00</updated><id>http://localhost:4000/tutorial/2022/10/15/Git%20Notes</id><content type="html" xml:base="http://localhost:4000/tutorial/2022/10/15/Git-Notes/">&lt;p&gt;There are many useful commands besides commit/push/pull.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set the user name and email:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To set your global username/email configuration:
+Open the command line.
+Set your username:
+git config –global user.name “FIRST_NAME LAST_NAME”
+Set your email address:
+git config –global user.email “MY_NAME@example.com”&lt;/p&gt;
+
+&lt;p&gt;To set repository-specific(if you want to update repo using different git accounts) username/email configuration:
+From the command line, change into the repository directory.
+Set your username:
+git config user.name “FIRST_NAME LAST_NAME”
+Set your email address:
+git config user.email “MY_NAME@example.com”
+Verify your configuration by displaying your configuration file:
+cat .git/config&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Change commit names in the history:&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>John Doe</name></author><category term="Tutorial" /><summary type="html">There are many useful commands besides commit/push/pull.</summary></entry><entry><title type="html">Deep Learning Hyperparameter Tuning Note (1)</title><link href="http://localhost:4000/tutorial/deep%20learning/tensorflow/2022/05/27/Deep-Learning-Hyperparameter-Tuning-Note(1)/" rel="alternate" type="text/html" title="Deep Learning Hyperparameter Tuning Note (1)" /><published>2022-05-27T19:30:09-04:00</published><updated>2022-05-27T19:30:09-04:00</updated><id>http://localhost:4000/tutorial/deep%20learning/tensorflow/2022/05/27/Deep%20Learning%20Hyperparameter%20Tuning%20Note(1)</id><content type="html" xml:base="http://localhost:4000/tutorial/deep%20learning/tensorflow/2022/05/27/Deep-Learning-Hyperparameter-Tuning-Note(1)/">&lt;p&gt;Hyperparameter tuning is a mandatory procedure of implementing a deep learning model. A wrong set of parameter could lead to many problems, such as overfitting or under fitting.
+Grid search for hyperparameter tuning isn’t realistic, we need to find a proper start point for hyperparameters.
+After implemented the model, first thing is to make sure the data processed in each epoch is sufficient to cover the whole training dataset.
+The default batch size of fit() method in tensorflow is 32, if steps per epoch is 1000, then each epoch could process 32,000 samples.
+Learning rate is one of the most important parameters for training the model, it is a parameter to control how much the weights are updated according to the estimated error.&lt;/p&gt;</content><author><name>John Doe</name></author><category term="Tutorial" /><category term="Deep Learning" /><category term="Tensorflow" /><summary type="html">Hyperparameter tuning is a mandatory procedure of implementing a deep learning model. A wrong set of parameter could lead to many problems, such as overfitting or under fitting. Grid search for hyperparameter tuning isn’t realistic, we need to find a proper start point for hyperparameters. After implemented the model, first thing is to make sure the data processed in each epoch is sufficient to cover the whole training dataset. The default batch size of fit() method in tensorflow is 32, if steps per epoch is 1000, then each epoch could process 32,000 samples. Learning rate is one of the most important parameters for training the model, it is a parameter to control how much the weights are updated according to the estimated error.</summary></entry></feed>
